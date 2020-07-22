@@ -24,6 +24,7 @@ public class AccessingDataMongodbApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// save a couple of customers
+		repository.deleteAll();
 		repository.save(new Customer("Alice", "Smith"));
 		repository.save(new Customer("Bob", "Smith"));
 
