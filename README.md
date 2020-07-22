@@ -41,6 +41,23 @@ at root dirctory of this project(/accessing-data-mongodb), use this cmd:
 $ ./gradlew bootRun
 `
 
+# API Documents
+Following information is provided when you run and test this application locally and use default configurations.
+
+Get all customers:
+
+`
+HTTP Method: GET
+URL: http://localhost:8080/customer
+`
+
+POST a customer
+
+`
+HTTP Method: POST
+URL: http://localhost:8080/customer/{firstName}/{lastName}
+`
+
 # References
 
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
