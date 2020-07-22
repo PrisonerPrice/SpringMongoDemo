@@ -5,7 +5,9 @@ on MacOS with HomeBrew:
 $ brew tap mongodb/brew
 $ brew install mongodb-community@4.2
 `
+
 on Windows, just follow the instruction:
+
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/
 
 # Start and Shut Down MongoDB
