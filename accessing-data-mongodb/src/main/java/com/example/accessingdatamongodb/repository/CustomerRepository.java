@@ -1,6 +1,6 @@
 package com.example.accessingdatamongodb.repository;
 
-import com.example.accessingdatamongodb.model.Customer;
+import com.example.accessingdatamongodb.domain.Customer;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

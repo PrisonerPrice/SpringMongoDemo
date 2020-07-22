@@ -4,7 +4,7 @@ package com.example.accessingdatamongodb;
 Reference: https://spring.io/guides/gs/accessing-data-mongodb/
  */
 
-import com.example.accessingdatamongodb.model.Customer;
+import com.example.accessingdatamongodb.domain.Customer;
 import com.example.accessingdatamongodb.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

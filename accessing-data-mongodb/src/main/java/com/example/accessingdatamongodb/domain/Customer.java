@@ -1,4 +1,4 @@
-package com.example.accessingdatamongodb.model;
+package com.example.accessingdatamongodb.domain;
 
 import org.springframework.data.annotation.Id;
 
