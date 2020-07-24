@@ -47,18 +47,84 @@ $ ./gradlew bootRun
 # API Documents
 Following information is provided when you run and test this application locally and use default configurations.
 
+## Customer Controller
+
 Get all customers:
 
 `
 HTTP Method: GET
+`
+`
 URL: http://localhost:8080/customer
 `
 
-POST a customer
+Get all groups a customer joins by email address:
+
+`
+HTTP Method: GET
+`
+`
+URL: http://localhost:8080/customer/{emailAddress}
+`
+
+Add a customer:
 
 `
 HTTP Method: POST
-URL: http://localhost:8080/customer/{firstName}/{lastName}
+`
+`
+URL: http://localhost:8080/customer/
+`
+`
+Request Body Template:
+{
+	"firstName": "firstName",
+	"lastName": "lastName",
+	"emailAddress": "f.l@example.com",
+	"groupIds": [
+		"123456789abc",
+		"234567890bcd"
+	]
+}
+`
+
+## Group Controller
+
+Get all groups:
+
+`
+HTTP Method: GET
+`
+`
+URL: http://localhost:8080/group
+`
+
+Get customers belong to a group by the group name:
+
+`
+HTTP Method: GET
+`
+`
+URL: http://localhost:8080/group/{groupName}
+`
+
+Add a group:
+
+`
+HTTP Method: POST
+`
+`
+URL: http://localhost:8080/group/
+`
+`
+Request Body Template:
+{
+	"groupName": "groupName",
+	"customerIds": [
+		"customerID1",
+		"customerID2"
+	]
+}
 `
 
 # References
