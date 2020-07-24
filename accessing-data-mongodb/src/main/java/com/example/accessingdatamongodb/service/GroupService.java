@@ -27,6 +27,7 @@ public class GroupService {
     }
 
     public Group addAGroup(Group group) {
+        group = groupRepository.save(group);
         Set<String> customerIds = group.getCustomerIds();
         for (String customerId : customerIds) {
             if (customerRepository.findCustomerById(customerId) == null) {
@@ -41,7 +42,7 @@ public class GroupService {
             }
 
         }
-        return groupRepository.save(group);
+        return group;
     }
 
     public Group getGroupByName(String name) {

@@ -22,6 +22,7 @@ public class CustomerService {
     private GroupRepository groupRepository;
 
     public Customer addOrUpdateACustomer(Customer customer) {
+        customer = customerRepository.save(customer);
         Set<String> groupIds = customer.getGroupIds();
         for (String groupId : groupIds) {
             if (groupRepository.findGroupById(groupId) == null) {
@@ -36,7 +37,7 @@ public class CustomerService {
             }
 
         }
-        return customerRepository.save(customer);
+        return customer;
     }
 
     public List<Customer> getAllCustomer() {
