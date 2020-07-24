@@ -6,6 +6,7 @@ Reference: https://spring.io/guides/gs/accessing-data-mongodb/
 
 import com.example.accessingdatamongodb.domain.Customer;
 import com.example.accessingdatamongodb.repository.CustomerRepository;
+import com.example.accessingdatamongodb.repository.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,7 +16,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AccessingDataMongodbApplication implements CommandLineRunner {
 
 	@Autowired
-	private CustomerRepository repository;
+	private CustomerRepository customerRepository;
+
+	@Autowired
+	private GroupRepository groupRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(AccessingDataMongodbApplication.class, args);
@@ -23,15 +27,19 @@ public class AccessingDataMongodbApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
+		// truncate the database
+		customerRepository.deleteAll();
+		groupRepository.deleteAll();
+
 		// save a couple of customers
-		repository.deleteAll();
-		repository.save(new Customer("Alice", "Smith"));
-		repository.save(new Customer("Bob", "Smith"));
+		customerRepository.save(new Customer("Alice", "Smith", "AS@abc.com"));
+		customerRepository.save(new Customer("Bob", "Smith", "BS@bbc.com"));
 
 		// fetch all customers
 		System.out.println("Customers found with findAll():");
 		System.out.println("-------------------------------");
-		for (Customer customer : repository.findAll()) {
+		for (Customer customer : customerRepository.findAll()) {
 			System.out.println(customer);
 		}
 		System.out.println();
@@ -39,11 +47,11 @@ public class AccessingDataMongodbApplication implements CommandLineRunner {
 		// fetch an individual customer
 		System.out.println("Customer found with findByFirstName('Alice'):");
 		System.out.println("--------------------------------");
-		System.out.println(repository.findByFirstName("Alice"));
+		System.out.println(customerRepository.findCustomerByFirstName("Alice"));
 
 		System.out.println("Customers found with findByLastName('Smith'):");
 		System.out.println("--------------------------------");
-		for (Customer customer : repository.findByLastName("Smith")) {
+		for (Customer customer : customerRepository.findCustomerByLastName("Smith")) {
 			System.out.println(customer);
 		}
 	}

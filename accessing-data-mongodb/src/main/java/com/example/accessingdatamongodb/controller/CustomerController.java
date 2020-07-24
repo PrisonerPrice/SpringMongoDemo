@@ -1,6 +1,7 @@
 package com.example.accessingdatamongodb.controller;
 
 import com.example.accessingdatamongodb.domain.Customer;
+import com.example.accessingdatamongodb.domain.Group;
 import com.example.accessingdatamongodb.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -21,10 +22,15 @@ public class CustomerController {
         return customers;
     }
 
-    @PostMapping(value = "/{firstName}/{lastName}", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    public void addACustomer(@PathVariable String firstName, @PathVariable String lastName) {
-        Customer customer = new Customer(firstName, lastName);
-        customerService.addACustomer(customer);
+    @GetMapping(value = "/{emailAddress}", produces = {MediaType.APPLICATION_JSON_VALUE})
+    public List<Group> getAllGroupsACustomerJoinsByEmailAddress(@PathVariable String emailAddress) {
+        Customer customer = customerService.getCustomerByEmailAddress(emailAddress);
+        return customerService.getGroupsACustomerJoins(customer);
+    }
+
+    @PostMapping(value = "", consumes = {MediaType.APPLICATION_JSON_VALUE})
+    public void addACustomer(@RequestBody Customer customer) {
+        customerService.addOrUpdateACustomer(customer);
     }
 
 }
