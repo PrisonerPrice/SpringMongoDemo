@@ -3,14 +3,17 @@ package com.example.accessingdatamongodb.controller;
 import com.example.accessingdatamongodb.domain.Customer;
 import com.example.accessingdatamongodb.domain.Group;
 import com.example.accessingdatamongodb.service.GroupService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(tags = "Group Controller")
 @RestController
 @RequestMapping(value = {"/group"})
+//@CrossOrigin
 public class GroupController {
 
     @Autowired

@@ -3,14 +3,17 @@ package com.example.accessingdatamongodb.controller;
 import com.example.accessingdatamongodb.domain.Customer;
 import com.example.accessingdatamongodb.domain.Group;
 import com.example.accessingdatamongodb.service.CustomerService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Api(tags = "Customer Controller")
 @RestController
 @RequestMapping(value = {"/customer"})
+//@CrossOrigin
 public class CustomerController {
 
     @Autowired
@@ -31,6 +34,12 @@ public class CustomerController {
     @PostMapping(value = "", consumes = {MediaType.APPLICATION_JSON_VALUE})
     public void addACustomer(@RequestBody Customer customer) {
         customerService.addOrUpdateACustomer(customer);
+    }
+
+    @GetMapping(value = "/A")
+    public Customer getAlice() {
+        Customer alice = customerService.getCustomerByEmailAddress("AS@abc.com");
+        return alice;
     }
 
 }

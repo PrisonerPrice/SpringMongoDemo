@@ -1,9 +1,11 @@
 package com.example.accessingdatamongodb.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.*;
 
+@Document
 public class Customer {
 
     @Id

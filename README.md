@@ -127,6 +127,15 @@ Request Body Template:
 }
 `
 
+# CORS test
+
+Run application on other port rather than 8080
+`
+./gradlew bootRun -Pport=9000
+`
+
+in browser, open localhost:8080 to test whether the CORS settings are effective.
+
 # References
 
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
