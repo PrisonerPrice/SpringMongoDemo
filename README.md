@@ -129,16 +129,39 @@ Request Body Template:
 
 # CORS test
 
-Run application on other port rather than 8080
+## Enable CORS
+
+using `@CrossOrigin` annotations on controller classes or controller methods.
+
+## Build runnable jar files
+
 `
-./gradlew bootRun -Pport=9000
+gradle build
 `
 
-in browser, open localhost:8080 to test whether the CORS settings are effective.
+After this command, runnable jar file will be in /build/libs. In this project, I just put different versions of them into /output
+
+## Test
+
+Start your application which will perform as the frontend at port 9000, and open http://localhost:9000 in browser.
+
+use following command in /output to test:
+
+`
+java -jar enabled.jar --server.port=8080
+`
+
+`
+java -jar disabled.jar --server.port=8080
+`
 
 # References
 
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/
 
 https://spring.io/guides/gs/accessing-data-mongodb/
+
+https://spring.io/guides/gs/rest-service-cors/
+
+https://stackoverflow.com/questions/53351698/pass-dynamic-port-from-gradle-bootrun-of-an-application
 

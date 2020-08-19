@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api(tags = "Customer Controller")
+//@Api(tags = "Customer Controller")
 @RestController
 @RequestMapping(value = {"/customer"})
 //@CrossOrigin

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Api(tags = "Group Controller")
+//@Api(tags = "Group Controller")
 @RestController
 @RequestMapping(value = {"/group"})
 //@CrossOrigin
